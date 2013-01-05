@@ -2,6 +2,7 @@
 #define GEOCODECOREAPPLICATION_H
 
 #include <QCoreApplication>
+#include <QTextStream>
 
 class GeoCodeCoreApplication : public QCoreApplication
 {
@@ -12,6 +13,7 @@ public:
 signals:
     
 public slots:
+    void Decodificado( double latidude, double longitude);
     
 };
 

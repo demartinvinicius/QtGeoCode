@@ -24,7 +24,8 @@ signals:
     void Decodificado( double latidude, double longitude);
 
 public:
-    explicit GoogleMap(QString endereco,QObject *parent = 0);
+    explicit GoogleMap(QObject *parent = 0);
+    void executa(QString endereco);
 
 
 

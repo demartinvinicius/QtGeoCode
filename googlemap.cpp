@@ -2,6 +2,10 @@
 
 GoogleMap::GoogleMap(QString endereco, QObject *parent) : QObject(parent)
 {
+
+}
+
+void GoogleMap::executa(QString endereco) {
     GerenciadorConexao = new QNetworkAccessManager(NULL);
     connect(GerenciadorConexao,SIGNAL(finished(QNetworkReply*)),this,SLOT(RespostaRecebida(QNetworkReply*)));
 
