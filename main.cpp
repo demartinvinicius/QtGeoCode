@@ -2,17 +2,14 @@
 #include <QObject>
 #include "googlemap.h"
 #include <geocodecoreapplication.h>
-
+#include <QTextStream>
 
 
 int main(int argc, char *argv[])
 {
+
     GeoCodeCoreApplication a(argc, argv);
 
-    GoogleMap teste;
-
-    connect()
-    teste.executa("Rua Jose Zappi 988");
 
 
     

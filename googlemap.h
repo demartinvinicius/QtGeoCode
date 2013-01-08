@@ -11,8 +11,10 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QUrlQuery>
+#include <QNetworkProxy>
 
-class GoogleMap : QObject
+
+class GoogleMap : public QObject
 {
     Q_OBJECT
 private:

@@ -1,13 +1,20 @@
 #include "googlemap.h"
 
-GoogleMap::GoogleMap(QString endereco, QObject *parent) : QObject(parent)
+GoogleMap::GoogleMap(QObject *parent) : QObject(parent)
 {
+    GerenciadorConexao = new QNetworkAccessManager(NULL);
 
+    QNetworkProxy proxy(QNetworkProxy::HttpProxy,"proxy.polici2121amilitar.sp.gov.br",3128,"teste","teste");
+
+   // GerenciadorConexao->setProxy(proxy);
+
+    connect(GerenciadorConexao,SIGNAL(finished(QNetworkReply*)),this,SLOT(RespostaRecebida(QNetworkReply*)));
 }
 
 void GoogleMap::executa(QString endereco) {
-    GerenciadorConexao = new QNetworkAccessManager(NULL);
-    connect(GerenciadorConexao,SIGNAL(finished(QNetworkReply*)),this,SLOT(RespostaRecebida(QNetworkReply*)));
+
+
+    QTextStream qout(stdout);
 
     QUrl uendereco;
     uendereco.setScheme("http");
@@ -15,8 +22,11 @@ void GoogleMap::executa(QString endereco) {
     uendereco.setPath("/maps/api/geocode/json");
 
     QUrlQuery qendereco;
-    qendereco.addQueryItem("address",endereco);
+    qendereco.addQueryItem("address",QUrl::toPercentEncoding(endereco));
     qendereco.addQueryItem("sensor","false");
+
+
+    qout << qendereco.query();
 
     uendereco.setQuery(qendereco);
 
